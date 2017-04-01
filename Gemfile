@@ -10,6 +10,7 @@ end
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+gem 'carrierwave', '~> 0.11.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'rack-cors'

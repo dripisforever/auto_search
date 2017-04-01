@@ -5,6 +5,7 @@ class User < ApplicationRecord
             format: {with: EMAIL_REGEX}
 
   validates :username, presence: true, uniqueness: {case_sensitive: false}
+  mount_uploader :avatar, AvatarUploader
   has_many :posts
 
   def self.authenticate(email_or_username, password)
