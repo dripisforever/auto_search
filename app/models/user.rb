@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: {case_sensitive: false}
   mount_uploader :avatar, AvatarUploader
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   def self.authenticate(email_or_username, password)
     user = User.find_by(email: email_or_username) || User.find_by(username: email_or_username)
