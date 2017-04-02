@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    posts = Post.all
+    render json: posts, status: 200
+  end
+
   def create
     post = current_user.posts.build(post_params)
     if post.save
