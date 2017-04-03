@@ -1,8 +1,9 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :photo_url, :filter, :caption, :created_at, :user_id, :lat_lng, :adress, :likes_count
+  attributes :id, :photo_url, :filter, :caption, :created_at, :user_id, :lat_lng, :adress, :likes_count, :comments_count
 
   belongs_to :user, serializer: UserSimpleSerializer
-  
+  has_many :comments
+
   def photo_url
     object.photo.url
   end
@@ -13,4 +14,5 @@ class PostSerializer < ActiveModel::Serializer
       lng: object.lng
     }
   end
+
 end
