@@ -1,7 +1,7 @@
 class Users::FacebookLoginsController < ApplicationController
 
   def create
-    @user = User.find_by(facebook_id: params[:facebook_id])
+    @user = User.find_by(facebook_id: params[:facebook_id]) if params[:facebook_id].present?
     if @user
       render json: @user, serializer: CurrentUserSerializer, status: 200
     else
