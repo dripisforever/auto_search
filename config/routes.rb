@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post 'signin' => 'sessions#create'
       get ':username/posts' => 'posts#index'
       get ':username/public_profile' => 'public_profiles#show'
+      get ':username/followers' => 'followers#index'
     end
 
     patch 'me/avatar' => 'avatar_images#update'
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy], module: :posts
       resource :comments, only: [:create], module: :posts
     end
-    
+
     resources :locations, only: [:show]
   end
 end
