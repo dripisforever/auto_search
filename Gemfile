@@ -8,15 +8,18 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
-# Use sqlite3 as the database for Active Record
+
 gem 'pg'
 gem 'carrierwave', '~> 0.11.2'
+gem 'will_paginate', '~> 3.1'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
 gem 'active_model_serializers', '~> 0.10.2'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt', '~> 1.5'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

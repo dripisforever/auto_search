@@ -1,9 +1,19 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
   attr_reader :current_user
-  
+
   def authenticate_user!
     authenticate_user_from_token || render_unauthorized
+  end
+
+  def pagination_dict(object)
+    {
+      current_page: object.current_page,
+      next_page: ojbect.next_page,
+      prev_page: ojbect.previous_page,
+      total_pages: object.total_pages,
+      total_count: object.total_entries
+    }
   end
 
   protected
