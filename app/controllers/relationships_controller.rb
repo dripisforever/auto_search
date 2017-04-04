@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
 
   def create
     if current_user.follow(@user)
+      create_notification
       render json: @user, status: 200
     else
       render json: {errors: ['Could not follow user'] }, status: 422
@@ -22,5 +23,9 @@ class RelationshipsController < ApplicationController
 
     def set_user
       @user = User.find(params[:user_id])
+    end
+
+    def create_notification
+      Notification.create!(actor: current_user, recipient: @user, notifiable: @user, action_type: 'START_FOLLOWING')
     end
 end
