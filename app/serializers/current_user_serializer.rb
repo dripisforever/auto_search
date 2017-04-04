@@ -1,9 +1,9 @@
 class CurrentUserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :username, :created_at, :authentication_token, :avatar_url,
-             :post_ids, :attrs, :liked_post_ids
+  attributes :id, :email, :username, :created_at, :authentication_token,
+             :post_ids, :attrs, :liked_post_ids, :following_ids, :follower_ids
 
   has_many :posts
-
+  
   def authentication_token
     JsonWebToken.encode({ user_id: objec.id })
   end

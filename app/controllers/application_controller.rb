@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
   attr_reader :current_user
-
+  
   def authenticate_user!
     authenticate_user_from_token || render_unauthorized
   end
