@@ -3,7 +3,7 @@ class CurrentUserSerializer < ActiveModel::Serializer
              :post_ids, :attrs, :liked_post_ids, :following_ids, :follower_ids
 
   has_many :posts
-  
+
   def authentication_token
     JsonWebToken.encode({ user_id: objec.id })
   end
@@ -12,7 +12,7 @@ class CurrentUserSerializer < ActiveModel::Serializer
     {
       email: object.email,
       username: object.username,
-      avatar_url: object.avatar.url
+      avatar_url: object.avatar_url
     }
   end
 end
