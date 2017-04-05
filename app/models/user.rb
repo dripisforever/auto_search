@@ -56,7 +56,7 @@ class User < ApplicationRecord
 
   def avatar_url
     if facebook_login? && avatar.url.nil?
-      "http://graph.facebook.com/#{facebook_id}/picture?type=normal"
+      "https://graph.facebook.com/#{facebook_id}/picture?type=normal"
     else
       avatar.url
     end
