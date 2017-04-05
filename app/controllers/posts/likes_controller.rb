@@ -1,6 +1,7 @@
 class Posts::LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post
+
   def create
     current_user.like!(@post)
     create_notification
@@ -20,8 +21,11 @@ class Posts::LikesController < ApplicationController
 
     def create_notification
       unless current_user.id == @post.id
-        Notification.create!(actor: current_user, recipient: @post.user,
-                             notifiable: @post, action_type: 'LIKE_POST')
+        notification = Notification.create!(actor: current_user, recipient: @post.user,
+                                    notifiable: @post, action_type: 'LIKE_POST')
+
+        serializable_resource = ActiveModelSerializers::SerializableResource.new(notification, {})
+        ActionCable.server.broadcast("web_notifications_#{@post.user.username}", json: serializable_resource.to_json)
       end
     end
 end
