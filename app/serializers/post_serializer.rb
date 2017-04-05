@@ -23,4 +23,18 @@ class PostSerializer < ActiveModel::Serializer
       object.filter_style
     end
   end
+
+  def comments
+    object.comments.latest.paginate(page: 1)
+  end
+
+  def comment_pagination
+    {
+      'currentPage' => self.comments.current_page,
+      'nextPage'    => self.comments.next_page,
+      'prevPage'    => self.comments.prev_page,
+      'totalPages'  => self.comments.total_pages,
+      'totalCount'  => self.comments.total_count
+    }
+  end
 end
