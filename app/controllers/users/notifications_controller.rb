@@ -3,7 +3,7 @@ class Users::NotificationsController < ApplicationController
 
   def index
     notifications = current_user.notifications.order(created_at: :desc).paginate(page: params[:page], per_page: 20)
-    render json: notifications, meta: pagination_count(notifications) status: 200
+    render json: notifications, meta: pagination_dict(notifications), status: 200
   end
 
   def update
