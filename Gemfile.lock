@@ -288,6 +288,7 @@ DEPENDENCIES
   byebug
   carrierwave (~> 0.11.2)
   fog (~> 1.38)
+  fog-aws
   jwt (~> 1.5)
   listen (~> 3.0.5)
   pg

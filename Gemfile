@@ -8,7 +8,7 @@ end
 ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
-
+gem 'fog-aws'
 gem 'pg'
 gem 'carrierwave', '~> 0.11.2'
 gem 'will_paginate', '~> 3.1'
