@@ -7,5 +7,6 @@ class Users::PublicProfilesController < ApplicationController
       render json: user, serializer: PublicProfileSerializer, status: 200
     else
       render json: { errors: ['User not found'] }, status: 422
+    end
   end
 end
