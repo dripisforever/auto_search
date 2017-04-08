@@ -25,7 +25,7 @@ class Posts::LikesController < ApplicationController
                                     notifiable: @post, action_type: 'LIKE_POST')
 
         serializable_resource = ActiveModelSerializers::SerializableResource.new(notification, {})
-        ActionCable.server.broadcast("web_notifications_#{@post.user.id}", json: serializable_resource.to_json)
+        ActionCable.server.broadcast("web_notifications_#{@post.user.id}", serializable_resource)
       end
     end
 end
