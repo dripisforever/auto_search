@@ -19,6 +19,10 @@ class NotificationSerializer < ActiveModel::Serializer
     case object.action_type
     when 'LIKE_POST'
       like_post_metadata
+    when 'START_FOLLOWING'
+      start_following_metadata
+    when 'COMMENT_ON_POST'
+      comment_on_post_metadata
     end
   end
 
@@ -33,6 +37,10 @@ class NotificationSerializer < ActiveModel::Serializer
       {
         'followerIds' => object.notifiable.follower_ids
       }
+    end
+
+    def comment_on_post_metadata
+      ActiveModelSerializers::SerializableResource.new(object.notifiable.comments.last)
     end
 
 end
