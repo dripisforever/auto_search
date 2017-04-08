@@ -26,7 +26,8 @@ Rails.application.routes.draw do
     end
 
     resources :locations, only: [:show]
-
+    resources :follow_suggestions, only: [:index]
+    
     mount ActionCable.server => '/cable'
   end
 end
