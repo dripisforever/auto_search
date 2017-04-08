@@ -12,6 +12,6 @@ class Post < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  scope :get_page, -> (page, per_page = 3) { includes(:user).order(created_at: :desc).paginate(page: page, per_page: 3) }
+  scope :get_page, -> (page, per_page = 3) { includes(:user, :comments).order(created_at: :desc).paginate(page: page, per_page: 3) }
 
 end
