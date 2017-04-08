@@ -28,4 +28,11 @@ class NotificationSerializer < ActiveModel::Serializer
         'likesCount' => object.notifiable.reload.likes_count
       }
     end
+
+    def start_following_metadata
+      {
+        'followerIds' => object.notifiable.follower_ids
+      }
+    end
+
 end
