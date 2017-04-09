@@ -27,8 +27,7 @@ class RelationshipsController < ApplicationController
 
     def create_notification
       Notification.create!(actor: current_user, recipient: @user, notifiable: @user, action_type: 'START_FOLLOWING')
-      
-      serializable_resource = ActiveModelSerializers::SerializableResource.new(notifcation, {})
-      ActionCable.server.broadcast("web_notifications_#{@user.id}", serializable_resource)
+
+      Notification::Broadcaster.new(notification, to: @user).broadcast
     end
 end
