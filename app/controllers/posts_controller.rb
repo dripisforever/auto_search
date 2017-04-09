@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    post = current_user.posts.build(post_params)
+    post_builder = Post::Create.new(post)
     if @post.save
       create_tags
       render json: @post, status: 201
